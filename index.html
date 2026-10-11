@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Computer Networking Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Interactive Computer Networking Simulator</h1>
+        <p>A presentation tool designed to demonstrate LAN/WAN, Peer-to-Peer Networks, and System Administrator Tasks.</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Tool 1: LAN vs WAN Classifier -->
+        <div class="card">
+            <h2>1. Network Classifier (LAN vs WAN)</h2>
+            <div class="form-group">
+                <label for="distanceRange">Select the geographical scope of the network:</label>
+                <select id="distanceRange">
+                    <option value="room">Inside a single room, office, or home</option>
+                    <option value="building">An entire office building or university campus</option>
+                    <option value="city">Connecting branches across cities or countries (Internet)</option>
+                </select>
+            </div>
+            <button onclick="classifyNetwork()">Determine Network Type</button>
+            <div id="netResult" class="result-box"></div>
+        </div>
+
+        <!-- Tool 2: P2P Simulator -->
+        <div class="card">
+            <h2>2. Peer-to-Peer (P2P) Network Simulator</h2>
+            <p style="color: var(--text-muted); margin-bottom: 15px;">Select two devices (Sender & Receiver) to transfer data directly without a central server:</p>
+            <div class="p2p-grid">
+                <div class="node" onclick="selectNode(1)" id="node1">🖥️ Device 1 (Moatasem)</div>
+                <div class="node" onclick="selectNode(2)" id="node2">💻 Device 2 (Omar)</div>
+                <div class="node" onclick="selectNode(3)" id="node3">📱 Device 3 (Mostafa)</div>
+                <div class="node" onclick="selectNode(4)" id="node4">💻 Device 4 (Ahmed)</div>
+            </div>
+            <div class="p2p-status" id="p2pStatus">Click on two devices to start transmitting...</div>
+            <button onclick="sendP2PData()" style="margin-top: 15px;" id="sendBtn" disabled>Transmit Data Directly (P2P)</button>
+        </div>
+
+        <!-- Tool 3: System Administrator Tasks -->
+        <div class="card">
+            <h2>3. System Administrator Tasks</h2>
+            <div class="scenario-box">
+                <p id="scenarioText"><strong>Scenario:</strong> Sales employees reported extreme lag when opening shared files and inability to send new documents today. As a System Administrator, what should you do first?</p>
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" onclick="checkAdminAnswer(false)">Restart all employees' computers</button>
+                <button class="option-btn" onclick="checkAdminAnswer(true)">Inspect server performance and network traffic</button>
+                <button class="option-btn" onclick="checkAdminAnswer(false)">Permanently disconnect the office internet</button>
+                <button class="option-btn" onclick="checkAdminAnswer(false)">Purchase brand new laptops for employees</button>
+            </div>
+            <div id="adminFeedback" class="feedback"></div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
